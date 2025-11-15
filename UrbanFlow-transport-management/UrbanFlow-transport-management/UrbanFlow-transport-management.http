@@ -1,0 +1,6 @@
+@UrbanFlow_transport_management_HostAddress = http://localhost:5064
+
+GET {{UrbanFlow_transport_management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
