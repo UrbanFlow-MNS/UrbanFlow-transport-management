@@ -12,4 +12,8 @@ public class Vehicule
     public int MaxCapacity { get; set; }
     public string Status { get; set; }
     public DateOnly NextMaintenance { get; set; }
+    
+    public RouteType RouteType { get; set; }
+    public ICollection<VehiculePosition> Positions { get; set; }
+
 }

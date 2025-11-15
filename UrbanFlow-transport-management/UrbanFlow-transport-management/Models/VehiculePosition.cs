@@ -7,4 +7,6 @@ public class VehiculePosition
     public decimal Longitude { get; set; }
     public decimal Latitude { get; set; }
     public int TripId { get; set; }
+    
+    public Vehicule Vehicule { get; set; }
 }
