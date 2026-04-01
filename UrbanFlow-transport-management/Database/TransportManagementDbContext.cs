@@ -1,5 +1,6 @@
-using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
+using UrbanFlow_transport_management.Models;
+
 namespace UrbanFlow_transport_management.Database;
 
 public class TransportManagementDbContext : DbContext

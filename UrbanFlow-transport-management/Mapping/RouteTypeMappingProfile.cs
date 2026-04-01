@@ -1,6 +1,6 @@
 using AutoMapper;
-using DefaultNamespace;
 using UrbanFlow_transport_management.DTO.RouteType;
+using UrbanFlow_transport_management.Models;
 
 namespace UrbanFlow_transport_management.Mapping;
 

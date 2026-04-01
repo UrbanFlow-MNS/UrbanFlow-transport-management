@@ -1,8 +1,8 @@
 using AutoMapper;
-using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
 using UrbanFlow_transport_management.Database;
 using UrbanFlow_transport_management.DTO.RouteType;
+using UrbanFlow_transport_management.Models;
 
 namespace UrbanFlow_transport_management.Repository;
 
@@ -35,7 +35,7 @@ public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper
         var agency = await GetRouteTypeById(id);
         
         if (agency == null)
-            throw new KeyNotFoundException($"Agency with id {id} not found");
+            throw new KeyNotFoundException($"Routetype with id {id} not found");
         
         db.RouteTypes.Remove(agency);
         await db.SaveChangesAsync();

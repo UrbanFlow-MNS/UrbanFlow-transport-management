@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using Microsoft.EntityFrameworkCore;
 using UrbanFlow_transport_management.Database;
 using UrbanFlow_transport_management.Mapping;

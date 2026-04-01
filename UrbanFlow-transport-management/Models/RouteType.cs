@@ -1,4 +1,4 @@
-namespace DefaultNamespace;
+namespace UrbanFlow_transport_management.Models;
 
 public class RouteType
 {
