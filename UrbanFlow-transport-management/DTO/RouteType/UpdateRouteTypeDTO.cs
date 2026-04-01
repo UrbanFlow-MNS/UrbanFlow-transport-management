@@ -1,6 +1,6 @@
 namespace UrbanFlow_transport_management.DTO.RouteType;
 
-public class UpdateRouteTypeDTO
+public class UpdateRouteTypeDto
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
 }
