@@ -4,4 +4,6 @@ public class CreateRouteTypeDTO
 {
     public int RouteTypeId { get; set; }
     public string Name { get; set; }
+    public int AgencyId { get; set; }
+
 }

@@ -3,6 +3,7 @@ namespace DefaultNamespace;
 public class Vehicule
 {
     public int VehiculeId { get; set; }
+    public int AgencyId { get; set; }
     public string RegistrationNumber { get; set; }
     public int RouteTypeId { get; set; }
     public string Brand { get; set; }
