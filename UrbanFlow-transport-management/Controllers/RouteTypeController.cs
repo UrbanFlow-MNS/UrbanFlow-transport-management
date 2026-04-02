@@ -22,5 +22,17 @@ public class RouteTypeController(IRouteTypeRepository repo) : Controller
         await repo.CreateRouteTypeAsync(dto);
     }
 
+    [HttpPut("update/{id}")]
+    public void UpdateRouteType(int id, UpdateRouteTypeDto routeTypeDto)
+    {
+        repo.UpdateRouteTypeAsync(id, routeTypeDto);
+    }
+
+    [HttpDelete("delete/{id}")]
+    public void DeleteRouteType(int id)
+    {
+        repo.DeleteRouteType(id);
+    }
+
     
 }
