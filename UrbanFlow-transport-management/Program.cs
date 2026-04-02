@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using UrbanFlow_transport_management.Database;
 using UrbanFlow_transport_management.Mapping;
+using UrbanFlow_transport_management.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<TransportManagementDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+builder.Services.AddScoped<IRouteTypeRepository, RouteTypeRepository>();
+
 
 builder.Services.AddAutoMapper(
     cfg => {}, 
