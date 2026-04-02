@@ -1,6 +1,6 @@
-namespace UrbanFlow_transport_management.Models;
+namespace UrbanFlow_transport_management.DTO.Vehicule;
 
-public class Vehicule
+public class GetVehiculeDto
 {
     public int VehiculeId { get; set; }
     public int AgencyId { get; set; }
@@ -14,8 +14,4 @@ public class Vehicule
     public string Status { get; set; }
     public DateOnly LastMaintenance { get; set; }
     public DateOnly NextMaintenance { get; set; }
-    
-    public RouteType RouteType { get; set; }
-    public ICollection<VehiculePosition> Positions { get; set; }
-
 }
