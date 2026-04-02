@@ -10,7 +10,7 @@ namespace UrbanFlow_transport_management.Controllers;
 public class RouteTypeController(IRouteTypeRepository repo) : Controller
 {
 
-    [HttpGet("/{Agencyid}")]
+    [HttpGet("/{agencyid}")]
     public async Task<List<GetRouteTypeDto>> GetRouteTypeByAgencyId(int id)
     {
         return await repo.GetAllRouteTypesByAgencyIdAsync(id);

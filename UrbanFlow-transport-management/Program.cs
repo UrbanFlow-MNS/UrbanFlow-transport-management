@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using UrbanFlow_transport_management.Database;
 using UrbanFlow_transport_management.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOpenApi();
+
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -13,7 +17,9 @@ builder.Services.AddAutoMapper(
     cfg => {}, 
     typeof(RouteTypeMappingProfile)
 );
-//builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
 
 var app = builder.Build();
 
@@ -40,6 +46,12 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    
+    app.MapScalarApiReference(options =>
+    {
+        options.Title = "UrbanFlow Transport Management API";
+        options.Theme = ScalarTheme.Moon;
+    });
 }
 
 app.UseHttpsRedirection();
