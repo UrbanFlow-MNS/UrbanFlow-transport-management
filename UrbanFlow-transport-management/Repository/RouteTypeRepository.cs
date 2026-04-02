@@ -6,7 +6,7 @@ using UrbanFlow_transport_management.Models;
 
 namespace UrbanFlow_transport_management.Repository;
 
-public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper)
+public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper) : IRouteTypeRepository
 {
     
     public async Task CreateRouteTypeAsync(CreateRouteTypeDto routeTypeDto)
@@ -24,9 +24,9 @@ public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper
         return await db.RouteTypes.FindAsync(id);
     }
     
-    public async Task<List<GetRouteTypeDto>> GetAllRouteTypesByAgencyIdAsync()
+    public async Task<List<GetRouteTypeDto>> GetAllRouteTypesByAgencyIdAsync(int id)
     {
-        var routeTypes = db.RouteTypes.Where(x =>  x.AgencyId == 1).AsNoTracking().ToList();
+        var routeTypes = await db.RouteTypes.Where(x =>  x.AgencyId == id).AsNoTracking().ToListAsync();
         return mapper.Map<List<GetRouteTypeDto>>(routeTypes);
     }
 
