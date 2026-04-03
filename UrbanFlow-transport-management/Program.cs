@@ -15,7 +15,7 @@ builder.Services.AddDbContext<TransportManagementDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<IRouteTypeRepository, RouteTypeRepository>();
-builder.Services.AddScoped<VehicleRepository>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 
 builder.Services.AddAutoMapper(
     cfg => {}, 

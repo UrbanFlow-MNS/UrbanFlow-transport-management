@@ -6,7 +6,7 @@ namespace UrbanFlow_transport_management.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class VehiclesController(VehicleRepository repo) : Controller
+public class VehiclesController(IVehicleRepository repo) : Controller
 {
     [HttpGet("filter/{id}")]
     public async Task<IActionResult> FilterRoutes([FromQuery] VehicleFilterDto filter, int id)
@@ -25,6 +25,4 @@ public class VehiclesController(VehicleRepository repo) : Controller
             message = "Vehicle created"
         });
     }
-    
-    
 }

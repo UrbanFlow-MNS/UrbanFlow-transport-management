@@ -28,4 +28,11 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="API\" />
+      <Folder Include="Application\" />
+      <Folder Include="Domain\" />
+      <Folder Include="Infrastructure\" />
+    </ItemGroup>
+
 </Project>

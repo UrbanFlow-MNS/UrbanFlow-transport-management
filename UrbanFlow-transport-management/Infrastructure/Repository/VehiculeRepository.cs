@@ -6,7 +6,7 @@ using UrbanFlow_transport_management.Models;
 
 namespace UrbanFlow_transport_management.Repository;
 
-public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
+public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper) : IVehicleRepository
 {
     public async Task<List<Vehicule>> GetAllVehiclesByAgencyIdAsync(int agencyId)
     {
