@@ -3,7 +3,7 @@ using UrbanFlow_transport_management.DTO.RouteType;
 using UrbanFlow_transport_management.Models;
 using UrbanFlow_transport_management.Repository;
 
-namespace UrbanFlow_transport_management.Controllers;
+namespace UrbanFlow_transport_management.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -21,6 +21,4 @@ public class RouteTypeController(IRouteTypeRepository repo) : Controller
     {
         await repo.CreateRouteTypeAsync(dto);
     }
-
-    
 }
