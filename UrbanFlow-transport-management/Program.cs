@@ -3,10 +3,13 @@ using Scalar.AspNetCore;
 using UrbanFlow_transport_management.Database;
 using UrbanFlow_transport_management.Mapping;
 using UrbanFlow_transport_management.Repository;
+using UrbanFlow_transport_management.API.GrpcServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddGrpc();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -15,7 +18,7 @@ builder.Services.AddDbContext<TransportManagementDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<IRouteTypeRepository, RouteTypeRepository>();
-
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 
 builder.Services.AddAutoMapper(
     cfg => {}, 
@@ -57,8 +60,9 @@ if (app.Environment.IsDevelopment())
         options.Theme = ScalarTheme.Moon;
     });
 }
+app.MapGrpcService<VehicleService>();
 
-app.UseHttpsRedirection();
+
 app.UseAuthorization();
 app.MapControllers();
 

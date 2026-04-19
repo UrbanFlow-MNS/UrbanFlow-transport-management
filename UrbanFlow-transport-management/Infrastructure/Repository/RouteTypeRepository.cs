@@ -19,9 +19,10 @@ public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper
     }
     
     
-    private async Task<RouteType?> GetRouteTypeById(int id)
+    public async Task<GetRouteTypeDto?> GetRouteTypeById(int id)
     {
-        return await db.RouteTypes.FindAsync(id);
+        var routetype = await db.RouteTypes.FindAsync(id);
+        return mapper.Map<GetRouteTypeDto>(routetype);
     }
     
     public async Task<List<GetRouteTypeDto>> GetAllRouteTypesByAgencyIdAsync(int id)
@@ -30,6 +31,7 @@ public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper
         return mapper.Map<List<GetRouteTypeDto>>(routeTypes);
     }
 
+    /*
     public async Task DeleteRouteType(int id)
     {
         var agency = await GetRouteTypeById(id);
@@ -40,6 +42,7 @@ public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper
         db.RouteTypes.Remove(agency);
         await db.SaveChangesAsync();
     }
+    */
     
     public async Task UpdateRouteTypeAsync(int id, UpdateRouteTypeDto routeTypeDto)
     {
