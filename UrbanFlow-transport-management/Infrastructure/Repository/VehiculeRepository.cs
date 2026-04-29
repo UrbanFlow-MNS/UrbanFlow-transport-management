@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using UrbanFlow_transport_management.Database;
@@ -15,16 +16,16 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
         return await db.Vehicules.Where(x => x.AgencyId == agencyId).ToListAsync();
     }
 
-    public async Task<Vehicule?> GetVehicleById(int id)
+    private async Task<Vehicule?> GetVehicleById(int id)
     {
         return await db.Vehicules.FindAsync(id);
     }
 
-    public async Task CreateVehicleAsync(CreateVehiculeDto vehiculeDto)
+    public async Task CreateVehicleAsync(CreateVehicleDto vehicleDto)
     {
-        ArgumentNullException.ThrowIfNull(vehiculeDto);
+        ArgumentNullException.ThrowIfNull(vehicleDto);
 
-        var vehicule = mapper.Map<Vehicule>(vehiculeDto);
+        var vehicule = mapper.Map<Vehicule>(vehicleDto);
         await db.Vehicules.AddAsync(vehicule);
         await db.SaveChangesAsync();
     }
@@ -43,7 +44,7 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
         await db.SaveChangesAsync();
     }
     
-    public async Task<List<GetVehiculeDto>> GetVehiclesByAgencyIdWithFilters(VehicleFilterDto filter, int id)
+    public async Task<List<GetVehicleDto>> GetVehiclesByAgencyIdWithFilters(VehicleFilterDto filter, int id)
     {
         ArgumentNullException.ThrowIfNull(filter);
 
@@ -66,22 +67,33 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
         
         
         await query.AsNoTracking().ToListAsync();
-        return mapper.Map<List<GetVehiculeDto>>(query);
+        return mapper.Map<List<GetVehicleDto>>(query);
     }
 
-    public async Task ArchiveVehicule(int id)
+    public async Task UpdateVehicleStatus(int id, VehicleStatus status)
     {
         var vehicle = await GetVehicleById(id);
+        if (vehicle == null)
+            return;
+        vehicle.Statut = status;
+        await db.SaveChangesAsync();
     }
 
+    public async Task UpdateVehicle(int id, UpdateVehicleDto vehicleDto)
+    {
+        ArgumentNullException.ThrowIfNull(vehicleDto);
+        
+        var vehicle = await GetVehicleById(id);
+        if (vehicle == null)
+            throw new KeyNotFoundException($"Vehicle with id {id} not found");
+        
+        mapper.Map(vehicleDto, vehicle);
+        await db.SaveChangesAsync();
+    }
 
     public IEnumerable<VehicleStatusDto> GetVehicleStatus()
     {
         return Enum.GetValues<VehicleStatus>()
             .Select(s => new VehicleStatusDto((int)s, s.ToString()));
     }
-    
-    
-    
-    
 }

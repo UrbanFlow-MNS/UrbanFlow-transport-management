@@ -9,7 +9,8 @@ public class VehiculeMappingProfile : Profile
 {
     public VehiculeMappingProfile()
     {
-        CreateMap<CreateVehiculeDto, Vehicule>();
-        CreateMap<Vehicule, GetVehiculeDto>();
+        CreateMap<CreateVehicleDto, Vehicule>();
+        CreateMap<Vehicule, GetVehicleDto>();
+        CreateMap<UpdateVehicleDto, Vehicule>();
     }
 }

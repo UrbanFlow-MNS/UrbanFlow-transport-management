@@ -17,7 +17,7 @@ public class VehiclesController(IVehicleRepository repo) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateVehicle([FromBody] CreateVehiculeDto vehicle)
+    public async Task<IActionResult> CreateVehicle([FromBody] CreateVehicleDto vehicle)
     {
         await repo.CreateVehicleAsync(vehicle);
         return Ok(new 
