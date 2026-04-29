@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using UrbanFlow_transport_management.Domain.Enum;
 using UrbanFlow_transport_management.DTO.Vehicule;
 using UrbanFlow_transport_management.Repository;
 
@@ -32,4 +33,47 @@ public class VehiclesController(IVehicleRepository repo) : Controller
         var status = repo.GetVehicleStatus();
         return Ok(status);
     }
+
+    [HttpPut("{vehicleId}")]
+    public IActionResult UpdateVehicle([FromBody] UpdateVehicleDto vehicle, int vehicleId)
+    {
+        repo.UpdateVehicle(vehicleId, vehicle);
+        return Ok(new 
+        {
+            message = "Vehicle updated"
+        });
+    }
+    
+    [HttpPatch("status/{vehicleId}")]
+    public IActionResult UpdateVehicleStatus([FromBody] VehicleStatus status, int vehicleId)
+    {
+        repo.UpdateVehicleStatus(vehicleId, status);
+        return Ok(new 
+        {
+            message = "Vehicle status updated"
+        });
+    }
+
+    [HttpDelete("{vehicleId}")]
+    public IActionResult DeleteVehicle(int vehicleId)
+    {
+        repo.DeleteVehicle(vehicleId);
+        return Ok(new
+        {
+            message = "Vehicle deleted"
+        });
+    }
+
+    [HttpGet("vehicles/{agencyId}")]
+    public IActionResult GetSeats(int agencyId)
+    {
+        var totalVehicles = repo.NumberOfVehiclesByAgencyId(agencyId);
+        return Ok(totalVehicles);
+    }
+    
+    
+    
+    
+    
+    
 }

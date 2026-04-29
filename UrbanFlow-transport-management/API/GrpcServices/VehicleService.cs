@@ -12,7 +12,7 @@ public class VehicleService(IRouteTypeRepository repo) : Vehicler.VehiclerBase
         var trip = await repo.GetRouteTypeById(request.Id);
         return new VehicleResponse()
         {
-            VehicleName = trip.Name,
+            VehicleName = trip?.Name,
         };
     }
 }

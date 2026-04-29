@@ -6,7 +6,6 @@ namespace UrbanFlow_transport_management.Repository;
 
 public interface IVehicleRepository
 {
-    Task<List<Vehicule>> GetAllVehiclesByAgencyIdAsync(int agencyId);
     Task CreateVehicleAsync(CreateVehicleDto vehicleDto);
     int NumberOfVehiclesByAgencyId(int agencyId);
     Task? DeleteVehicle(int id);

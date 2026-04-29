@@ -11,7 +11,7 @@ namespace UrbanFlow_transport_management.Repository;
 
 public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper) : IVehicleRepository
 {
-    public async Task<List<Vehicule>> GetAllVehiclesByAgencyIdAsync(int agencyId)
+    private async Task<List<Vehicule>> GetAllVehiclesByAgencyIdAsync(int agencyId)
     {
         return await db.Vehicules.Where(x => x.AgencyId == agencyId).ToListAsync();
     }
