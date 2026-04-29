@@ -1,8 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using UrbanFlow_transport_management.Database;
+using UrbanFlow_transport_management.Domain.Enum;
 using UrbanFlow_transport_management.DTO.Vehicule;
 using UrbanFlow_transport_management.Models;
+using static System.Enum;
 
 namespace UrbanFlow_transport_management.Repository;
 
@@ -57,7 +59,7 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
             query = query.Where(v => v.Model == filter.Model);
         
         if (filter.Status != null)
-            query = query.Where(v => v.Status == filter.Status);
+            query = query.Where(v => v.Statut == filter.Status);
         
         if (filter.BeforeLastMaintenance != null)
             query = query.Where(v => v.LastMaintenance <= filter.BeforeLastMaintenance);
@@ -66,5 +68,20 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
         await query.AsNoTracking().ToListAsync();
         return mapper.Map<List<GetVehiculeDto>>(query);
     }
+
+    public async Task ArchiveVehicule(int id)
+    {
+        var vehicle = await GetVehicleById(id);
+    }
+
+
+    public IEnumerable<VehicleStatusDto> GetVehicleStatus()
+    {
+        return Enum.GetValues<VehicleStatus>()
+            .Select(s => new VehicleStatusDto((int)s, s.ToString()));
+    }
+    
+    
+    
     
 }

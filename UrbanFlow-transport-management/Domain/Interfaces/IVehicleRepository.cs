@@ -10,4 +10,6 @@ public interface IVehicleRepository
     int NumberOfVehiclesByAgencyId(int agencyId);
     Task? DeleteVehicle(int id);
     Task<List<GetVehiculeDto>> GetVehiclesByAgencyIdWithFilters(VehicleFilterDto filter, int id);
+    public IEnumerable<VehicleStatusDto> GetVehicleStatus();
+
 }

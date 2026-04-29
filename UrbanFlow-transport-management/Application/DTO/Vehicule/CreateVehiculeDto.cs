@@ -1,3 +1,5 @@
+using UrbanFlow_transport_management.Domain.Enum;
+
 namespace UrbanFlow_transport_management.DTO.Vehicule;
 
 public class CreateVehiculeDto
@@ -10,7 +12,7 @@ public class CreateVehiculeDto
     public required DateOnly ServiceDebut { get; set; }
     public int? SeatsCount { get; set; }
     public int? MaxCapacity { get; set; }
-    public string Status { get; set; } = "En ligne";
+    public VehicleStatus Status { get; set; } = VehicleStatus.Active;
     public DateOnly? LastMaintenance { get; set; }
     public DateOnly? NextMaintenance { get; set; }
 }

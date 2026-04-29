@@ -25,4 +25,11 @@ public class VehiclesController(IVehicleRepository repo) : Controller
             message = "Vehicle created"
         });
     }
+
+    [HttpGet("status")]
+    public IActionResult GetStatus()
+    {
+        var status = repo.GetVehicleStatus();
+        return Ok(status);
+    }
 }
