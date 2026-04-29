@@ -1,10 +1,11 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using UrbanFlow_transport_management.Database;
-using UrbanFlow_transport_management.DTO.RouteType;
-using UrbanFlow_transport_management.Models;
+using UrbanFlow_transport_management.Application.DTO.RouteType;
+using UrbanFlow_transport_management.Domain.Interfaces;
+using UrbanFlow_transport_management.Domain.Models;
+using UrbanFlow_transport_management.Infrastructure.Database;
 
-namespace UrbanFlow_transport_management.Repository;
+namespace UrbanFlow_transport_management.Infrastructure.Repository;
 
 public class RouteTypeRepository(TransportManagementDbContext db, IMapper mapper) : IRouteTypeRepository
 {

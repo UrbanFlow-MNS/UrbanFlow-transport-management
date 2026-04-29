@@ -1,6 +1,5 @@
 using Grpc.Core;
-using UrbanFlow_transport_management.DTO.RouteType;
-using UrbanFlow_transport_management.Repository;
+using UrbanFlow_transport_management.Domain.Interfaces;
 using UrbanFlow_trips;
 
 namespace UrbanFlow_transport_management.API.GrpcServices;

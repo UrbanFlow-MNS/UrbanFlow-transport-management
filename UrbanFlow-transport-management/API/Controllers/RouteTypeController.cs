@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using UrbanFlow_transport_management.DTO.RouteType;
-using UrbanFlow_transport_management.Models;
-using UrbanFlow_transport_management.Repository;
+using UrbanFlow_transport_management.Application.DTO.RouteType;
+using UrbanFlow_transport_management.Domain.Interfaces;
 
 namespace UrbanFlow_transport_management.API.Controllers;
 

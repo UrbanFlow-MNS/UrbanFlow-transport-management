@@ -1,6 +1,6 @@
 using UrbanFlow_transport_management.Domain.Enum;
 
-namespace UrbanFlow_transport_management.DTO.Vehicule;
+namespace UrbanFlow_transport_management.Application.DTO.Vehicule;
 
 public class UpdateVehicleDto
 {

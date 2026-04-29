@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
-using UrbanFlow_transport_management.Database;
-using UrbanFlow_transport_management.Mapping;
-using UrbanFlow_transport_management.Repository;
 using UrbanFlow_transport_management.API.GrpcServices;
+using UrbanFlow_transport_management.Application.Mapping;
+using UrbanFlow_transport_management.Domain.Interfaces;
+using UrbanFlow_transport_management.Infrastructure.Database;
+using UrbanFlow_transport_management.Infrastructure.Repository;
 
 
 var builder = WebApplication.CreateBuilder(args);

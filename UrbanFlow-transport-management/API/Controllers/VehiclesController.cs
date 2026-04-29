@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using UrbanFlow_transport_management.Application.DTO.Vehicule;
 using UrbanFlow_transport_management.Domain.Enum;
-using UrbanFlow_transport_management.DTO.Vehicule;
-using UrbanFlow_transport_management.Repository;
+using UrbanFlow_transport_management.Domain.Interfaces;
 
-namespace UrbanFlow_transport_management.Controllers;
+namespace UrbanFlow_transport_management.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

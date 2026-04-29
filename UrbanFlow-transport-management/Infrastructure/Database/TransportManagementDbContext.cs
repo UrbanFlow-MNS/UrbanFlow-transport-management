@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using UrbanFlow_transport_management.Models;
+using UrbanFlow_transport_management.Domain.Models;
 
-namespace UrbanFlow_transport_management.Database;
+namespace UrbanFlow_transport_management.Infrastructure.Database;
 
 public class TransportManagementDbContext : DbContext
 {

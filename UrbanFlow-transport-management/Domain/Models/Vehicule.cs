@@ -1,6 +1,6 @@
 using UrbanFlow_transport_management.Domain.Enum;
 
-namespace UrbanFlow_transport_management.Models;
+namespace UrbanFlow_transport_management.Domain.Models;
 
 public class Vehicule
 {

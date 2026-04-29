@@ -1,9 +1,8 @@
 using AutoMapper;
-using UrbanFlow_transport_management.DTO.RouteType;
-using UrbanFlow_transport_management.DTO.Vehicule;
-using UrbanFlow_transport_management.Models;
+using UrbanFlow_transport_management.Application.DTO.Vehicule;
+using UrbanFlow_transport_management.Domain.Models;
 
-namespace UrbanFlow_transport_management.Mapping;
+namespace UrbanFlow_transport_management.Application.Mapping;
 
 public class VehiculeMappingProfile : Profile
 {

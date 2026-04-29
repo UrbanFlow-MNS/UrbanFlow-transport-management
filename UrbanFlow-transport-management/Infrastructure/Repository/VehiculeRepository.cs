@@ -1,13 +1,12 @@
-using System.Reflection.Metadata.Ecma335;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using UrbanFlow_transport_management.Database;
+using UrbanFlow_transport_management.Application.DTO.Vehicule;
 using UrbanFlow_transport_management.Domain.Enum;
-using UrbanFlow_transport_management.DTO.Vehicule;
-using UrbanFlow_transport_management.Models;
-using static System.Enum;
+using UrbanFlow_transport_management.Domain.Interfaces;
+using UrbanFlow_transport_management.Domain.Models;
+using UrbanFlow_transport_management.Infrastructure.Database;
 
-namespace UrbanFlow_transport_management.Repository;
+namespace UrbanFlow_transport_management.Infrastructure.Repository;
 
 public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper) : IVehicleRepository
 {

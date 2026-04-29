@@ -1,8 +1,7 @@
+using UrbanFlow_transport_management.Application.DTO.Vehicule;
 using UrbanFlow_transport_management.Domain.Enum;
-using UrbanFlow_transport_management.DTO.Vehicule;
-using UrbanFlow_transport_management.Models;
 
-namespace UrbanFlow_transport_management.Repository;
+namespace UrbanFlow_transport_management.Domain.Interfaces;
 
 public interface IVehicleRepository
 {
