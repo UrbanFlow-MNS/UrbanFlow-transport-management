@@ -1,6 +1,6 @@
-using UrbanFlow_transport_management.DTO.RouteType;
+using UrbanFlow_transport_management.Application.DTO.RouteType;
 
-namespace UrbanFlow_transport_management.Repository;
+namespace UrbanFlow_transport_management.Domain.Interfaces;
 
 public interface IRouteTypeRepository
 {

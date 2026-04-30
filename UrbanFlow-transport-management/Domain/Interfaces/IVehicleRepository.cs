@@ -1,13 +1,16 @@
-using UrbanFlow_transport_management.DTO.Vehicule;
-using UrbanFlow_transport_management.Models;
+using UrbanFlow_transport_management.Application.DTO.Vehicule;
+using UrbanFlow_transport_management.Domain.Enum;
 
-namespace UrbanFlow_transport_management.Repository;
+namespace UrbanFlow_transport_management.Domain.Interfaces;
 
 public interface IVehicleRepository
 {
-    Task<List<Vehicule>> GetAllVehiclesByAgencyIdAsync(int agencyId);
-    Task CreateVehicleAsync(CreateVehiculeDto vehiculeDto);
+    Task CreateVehicleAsync(CreateVehicleDto vehicleDto);
     int NumberOfVehiclesByAgencyId(int agencyId);
     Task? DeleteVehicle(int id);
-    Task<List<GetVehiculeDto>> GetVehiclesByAgencyIdWithFilters(VehicleFilterDto filter, int id);
+    Task<List<GetVehicleDto>> GetVehiclesByAgencyIdWithFilters(VehicleFilterDto filter, int id);
+    public IEnumerable<VehicleStatusDto> GetVehicleStatus();
+    Task UpdateVehicle(int id, UpdateVehicleDto vehicleDto);
+    Task UpdateVehicleStatus(int id, VehicleStatus status);
+
 }

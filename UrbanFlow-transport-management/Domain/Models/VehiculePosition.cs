@@ -1,4 +1,4 @@
-namespace UrbanFlow_transport_management.Models;
+namespace UrbanFlow_transport_management.Domain.Models;
 
 public class VehiculePosition
 {

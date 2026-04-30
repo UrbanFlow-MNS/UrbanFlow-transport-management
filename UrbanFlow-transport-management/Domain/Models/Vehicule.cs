@@ -1,4 +1,6 @@
-namespace UrbanFlow_transport_management.Models;
+using UrbanFlow_transport_management.Domain.Enum;
+
+namespace UrbanFlow_transport_management.Domain.Models;
 
 public class Vehicule
 {
@@ -11,10 +13,9 @@ public class Vehicule
     public DateOnly ServiceDebut { get; set; }
     public int SeatsCount { get; set; }
     public int MaxCapacity { get; set; }
-    public string Status { get; set; }
+    public VehicleStatus Statut { get; set; }
     public DateOnly LastMaintenance { get; set; }
     public DateOnly NextMaintenance { get; set; }
-    
     public RouteType RouteType { get; set; }
     public ICollection<VehiculePosition> Positions { get; set; }
 

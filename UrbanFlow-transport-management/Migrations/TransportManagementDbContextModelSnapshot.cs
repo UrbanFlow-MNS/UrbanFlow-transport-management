@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using UrbanFlow_transport_management.Database;
+using UrbanFlow_transport_management.Infrastructure.Database;
 
 #nullable disable
 
@@ -22,7 +22,7 @@ namespace UrbanFlow_transport_management.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DefaultNamespace.RouteType", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.RouteType", b =>
                 {
                     b.Property<int>("RouteTypeId")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace UrbanFlow_transport_management.Migrations
                     b.ToTable("RouteTypes");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.Vehicule", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.Vehicule", b =>
                 {
                     b.Property<int>("VehiculeId")
                         .ValueGeneratedOnAdd()
@@ -56,6 +56,9 @@ namespace UrbanFlow_transport_management.Migrations
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateOnly>("LastMaintenance")
+                        .HasColumnType("date");
 
                     b.Property<int>("MaxCapacity")
                         .HasColumnType("integer");
@@ -80,9 +83,8 @@ namespace UrbanFlow_transport_management.Migrations
                     b.Property<DateOnly>("ServiceDebut")
                         .HasColumnType("date");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Statut")
+                        .HasColumnType("integer");
 
                     b.HasKey("VehiculeId");
 
@@ -91,7 +93,7 @@ namespace UrbanFlow_transport_management.Migrations
                     b.ToTable("Vehicules");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.VehiculePosition", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.VehiculePosition", b =>
                 {
                     b.Property<int>("VehiculePositionId")
                         .ValueGeneratedOnAdd()
@@ -118,9 +120,9 @@ namespace UrbanFlow_transport_management.Migrations
                     b.ToTable("VehiculePositions");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.Vehicule", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.Vehicule", b =>
                 {
-                    b.HasOne("DefaultNamespace.RouteType", "RouteType")
+                    b.HasOne("UrbanFlow_transport_management.Models.RouteType", "RouteType")
                         .WithMany("Vehicules")
                         .HasForeignKey("RouteTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -129,9 +131,9 @@ namespace UrbanFlow_transport_management.Migrations
                     b.Navigation("RouteType");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.VehiculePosition", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.VehiculePosition", b =>
                 {
-                    b.HasOne("DefaultNamespace.Vehicule", "Vehicule")
+                    b.HasOne("UrbanFlow_transport_management.Models.Vehicule", "Vehicule")
                         .WithMany("Positions")
                         .HasForeignKey("VehiculeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -140,12 +142,12 @@ namespace UrbanFlow_transport_management.Migrations
                     b.Navigation("Vehicule");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.RouteType", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.RouteType", b =>
                 {
                     b.Navigation("Vehicules");
                 });
 
-            modelBuilder.Entity("DefaultNamespace.Vehicule", b =>
+            modelBuilder.Entity("UrbanFlow_transport_management.Models.Vehicule", b =>
                 {
                     b.Navigation("Positions");
                 });

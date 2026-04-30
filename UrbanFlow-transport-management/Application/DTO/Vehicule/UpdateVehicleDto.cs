@@ -1,8 +1,9 @@
-namespace UrbanFlow_transport_management.DTO.Vehicule;
+using UrbanFlow_transport_management.Domain.Enum;
 
-public class CreateVehiculeDto
+namespace UrbanFlow_transport_management.Application.DTO.Vehicule;
+
+public class UpdateVehicleDto
 {
-    public int AgencyId { get; set; }
     public required string RegistrationNumber { get; set; }
     public required int RouteTypeId { get; set; }
     public string? Brand { get; set; }
@@ -10,7 +11,7 @@ public class CreateVehiculeDto
     public required DateOnly ServiceDebut { get; set; }
     public int? SeatsCount { get; set; }
     public int? MaxCapacity { get; set; }
-    public string Status { get; set; } = "En ligne";
+    public VehicleStatus Status { get; set; }
     public DateOnly? LastMaintenance { get; set; }
-    public DateOnly? NextMaintenance { get; set; }
+    public DateOnly? NextMaintenance => LastMaintenance?.AddMonths(6);
 }

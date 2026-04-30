@@ -1,6 +1,6 @@
-namespace UrbanFlow_transport_management.DTO.Vehicule;
+namespace UrbanFlow_transport_management.Application.DTO.Vehicule;
 
-public class GetVehiculeDto
+public class GetVehicleDto
 {
     public int VehiculeId { get; set; }
     public int AgencyId { get; set; }

@@ -1,4 +1,4 @@
-namespace UrbanFlow_transport_management.DTO.RouteType;
+namespace UrbanFlow_transport_management.Application.DTO.RouteType;
 
 public class UpdateRouteTypeDto
 {
