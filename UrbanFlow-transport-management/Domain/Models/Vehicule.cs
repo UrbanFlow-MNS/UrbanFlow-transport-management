@@ -13,7 +13,7 @@ public class Vehicule
     public DateOnly ServiceDebut { get; set; }
     public int SeatsCount { get; set; }
     public int MaxCapacity { get; set; }
-    public VehicleStatus Statut { get; set; }
+    public VehicleStatus Status { get; set; }
     public DateOnly LastMaintenance { get; set; }
     public DateOnly NextMaintenance { get; set; }
     public RouteType RouteType { get; set; }

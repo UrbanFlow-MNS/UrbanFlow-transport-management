@@ -59,7 +59,7 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
             query = query.Where(v => v.Model == filter.Model);
         
         if (filter.Status != null)
-            query = query.Where(v => v.Statut == filter.Status);
+            query = query.Where(v => v.Status == filter.Status);
         
         if (filter.BeforeLastMaintenance != null)
             query = query.Where(v => v.LastMaintenance <= filter.BeforeLastMaintenance);
@@ -74,7 +74,7 @@ public class VehicleRepository(TransportManagementDbContext db, IMapper  mapper)
         var vehicle = await GetVehicleById(id);
         if (vehicle == null)
             return;
-        vehicle.Statut = status;
+        vehicle.Status = status;
         await db.SaveChangesAsync();
     }
 
